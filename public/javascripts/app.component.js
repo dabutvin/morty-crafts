@@ -2,10 +2,12 @@
 	
 	app.AppComponent = ng.core.Component({
 		selector: 'morty-crafts',
-		template: '<h1>Morty Crafts!</h1>'
+		templateUrl: 'html/index.html'
 	})
 	.Class({
-		constructor: function(){}
+		constructor: function(){
+			this.items = app.items;
+		}
 	});
 
 })(window.app || (window.app = {}));
