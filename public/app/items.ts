@@ -1,6 +1,6 @@
-(function(app){
+export class Items{
 
-	app.items = [
+	data = [
 	{
 		name: 'Morty Manipulator Chip',
 		desc: 'Captures a wild Morty with low health.',
@@ -98,4 +98,4 @@
 		desc: 'Apply generously to make things purer, stronger.'
 	}
 	];
-})(window.app || (window.app = {}));
+}

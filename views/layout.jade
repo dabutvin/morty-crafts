@@ -3,12 +3,28 @@ html
 	head
 		title= title
 		script(src='https://cdnjs.cloudflare.com/ajax/libs/es6-shim/0.34.2/es6-shim.min.js')
+		script(src='https://cdnjs.cloudflare.com/ajax/libs/systemjs/0.19.17/system-polyfills.js')
 		script(src='https://cdnjs.cloudflare.com/ajax/libs/angular.js/2.0.0-beta.1/angular2-polyfills.min.js')
-		script(src='https://cdnjs.cloudflare.com/ajax/libs/angular.js/2.0.0-beta.1/Rx.umd.min.js')
-		script(src='https://cdnjs.cloudflare.com/ajax/libs/angular.js/2.0.0-beta.1/angular2-all.umd.min.js')
-		script(src='/javascripts/app.component.js')
-		script(src='/javascripts/items.js')
-		script(src='/javascripts/boot.js')
+		script(src='https://cdnjs.cloudflare.com/ajax/libs/systemjs/0.19.17/system.src.js')
+		script(src='https://cdnjs.cloudflare.com/ajax/libs/rxjs/4.0.7/rx.all.min.js')
+		script(src='https://cdnjs.cloudflare.com/ajax/libs/angular.js/2.0.0-beta.1/angular2.dev.js')
+
+		script.
+			System.config({
+				 map: {
+			        rxjs: '/rxjs' // added this map section
+			    },
+				packages: {
+					app: {
+						format: 'register',
+						defaultExtension: 'js'
+					},
+					rxjs: {defaultExtension: 'js'} // and added this to packages
+				}
+			});
+			System.import('/app/boot')
+				.then(null, console.error.bind(console));
+
 		link(rel='stylesheet', href='/stylesheets/style.css')
 	body
 		morty-crafts
